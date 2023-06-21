@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Health</string>
+    <string name="next">Далее</string>
+
+    <!-- OnBoardingGender -->
+    <string name="gender_man">Мужской</string>
+    <string name="gender_woman">Женский</string>
+    <string name="gender_title">Выбор пола</string>
 </resources>
