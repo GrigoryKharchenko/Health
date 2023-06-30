@@ -1,8 +1,8 @@
 package com.health.presentation.screen.activiti
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.health.R
@@ -24,9 +24,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), HasAndroidInject
     @Inject
     lateinit var defaultViewModelFactory: ViewModelFactory
 
-    private val viewModel by lazy {
-        ViewModelProvider(this, defaultViewModelFactory)[MainViewModel::class.java]
-    }
+    private val viewModel by viewModels<MainViewModel> { defaultViewModelFactory }
 
     private val navigator by lazy { AppNavigator(this, R.id.container) }
 
@@ -36,8 +34,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), HasAndroidInject
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            navigatorHolder.setNavigator(navigator)
-            viewModel.startScreen()
+            viewModel.perform(MainEvent.StartScreen)
         }
+    }
+
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        navigatorHolder.setNavigator(navigator)
+    }
+
+    override fun onPause() {
+        navigatorHolder.removeNavigator()
+        super.onPause()
     }
 }

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.health.databinding.FragmentDailyActivityBinding
 import com.health.di.ViewModelFactory
 import com.health.extension.launchWhenStarted
@@ -18,18 +18,21 @@ class DailyActivityFragment : BaseFragment() {
     private val binding get() = _binding!!
 
     private val adapter by lazy {
-        DailyActivityAdapter(onItemClick = { id ->
-            viewModel.selectDailyActivity(id)
-            binding.btnNext.isVisible = true
-        })
+        DailyActivityAdapter(
+            onItemClick = { id ->
+                viewModel.perform(
+                    DailyActivityEvent.SelectDailyActivity(
+                        dailyActivityId = id
+                    )
+                )
+            }
+        )
     }
 
     @Inject
     lateinit var defaultViewModelFactory: ViewModelFactory
 
-    private val viewModel by lazy {
-        ViewModelProvider(this, defaultViewModelFactory)[DailyActivityViewModel::class.java]
-    }
+    private val viewModel by viewModels<DailyActivityViewModel> { defaultViewModelFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,14 +51,15 @@ class DailyActivityFragment : BaseFragment() {
         }
     }
 
-    private fun handleUiState(state: DailyActivityViewState) {
-        adapter.submitList(state.dailyActivities)
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         binding.rvActivity.adapter = null
         _binding = null
+    }
+
+    private fun handleUiState(state: DailyActivityViewState) {
+        adapter.submitList(state.dailyActivities)
+        binding.btnNext.isVisible = state.isVisibleBtnNext
     }
 
     companion object {

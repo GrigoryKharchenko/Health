@@ -22,7 +22,13 @@ class DailyActivityViewModel @Inject constructor(
         getDailyActivity()
     }
 
-    fun selectDailyActivity(dailyActivityId: Int) {
+    fun perform(event: DailyActivityEvent) {
+        when (event) {
+            is DailyActivityEvent.SelectDailyActivity -> selectDailyActivity(event.dailyActivityId)
+        }
+    }
+
+    private fun selectDailyActivity(dailyActivityId: Int) {
         val dailyActivities = _dailyActivityFlow.value.dailyActivities.map { dailyActivity ->
             when {
                 dailyActivityId == lastSelectedDailyActivityId && dailyActivityId == dailyActivity.id ->
@@ -33,8 +39,13 @@ class DailyActivityViewModel @Inject constructor(
             }
         }
         lastSelectedDailyActivityId = dailyActivityId
-        _dailyActivityFlow.update {
-            it.copy(dailyActivities = dailyActivities)
+        _dailyActivityFlow.update { state ->
+            state.copy(
+                dailyActivities = dailyActivities,
+                isVisibleBtnNext = dailyActivities.any { dailyActivity ->
+                    dailyActivity.isSelected
+                }
+            )
         }
     }
 
@@ -42,7 +53,7 @@ class DailyActivityViewModel @Inject constructor(
         viewModelScope.launch {
             _dailyActivityFlow.emit(
                 DailyActivityViewState(
-                    dailyActivities = dailyActivityRepository.getDailyActivity()
+                    dailyActivities = dailyActivityRepository.getDailyActivity(),
                 )
             )
         }

@@ -32,19 +32,19 @@ class BestFilmsActorViewHolder(private val binding: ItemDailyActivityBinding) :
             ivIconActivity.setImageResource(dailyActivityModel.iconActivity)
             tvAmountCalories.text = dailyActivityModel.amountCalories.toString()
             tvDescription.text = itemView.context.getString(dailyActivityModel.description)
-            root.setOnClickListener {
-                onItemClick(dailyActivityModel.id)
-            }
             if (dailyActivityModel.isSelected) {
                 root.setBackgroundResource(R.drawable.blue_bg)
             } else {
                 root.setBackgroundColor(Color.TRANSPARENT)
             }
+            root.setOnClickListener {
+                onItemClick(dailyActivityModel.id)
+            }
         }
     }
 }
 
-class BestFilmsActorDiffUtil : DiffUtil.ItemCallback<DailyActivityModel>() {
+private class BestFilmsActorDiffUtil : DiffUtil.ItemCallback<DailyActivityModel>() {
 
     override fun areItemsTheSame(oldItem: DailyActivityModel, newItem: DailyActivityModel): Boolean =
         oldItem.id == newItem.id

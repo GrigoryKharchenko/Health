@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.health.R
 import com.health.databinding.FragmentGenderBinding
 import com.health.di.ViewModelFactory
@@ -21,9 +21,7 @@ class GenderFragment : BaseFragment() {
     @Inject
     lateinit var defaultViewModelFactory: ViewModelFactory
 
-    private val viewModel by lazy {
-        ViewModelProvider(this, defaultViewModelFactory)[GenderViewModel::class.java]
-    }
+    private val viewModel by viewModels<GenderViewModel> { defaultViewModelFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,7 +46,7 @@ class GenderFragment : BaseFragment() {
                 btnNext.isGone = false
             }
             btnNext.setOnClickListener {
-                viewModel.openDailyActivityFragment()
+                viewModel.perform(GenderEvent.OpenDailyActivityFragment)
             }
         }
     }

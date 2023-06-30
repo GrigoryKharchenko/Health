@@ -9,7 +9,13 @@ class MainViewModel @Inject constructor(
     private val router: Router
 ) : ViewModel() {
 
-    fun startScreen() {
+    fun perform(event: MainEvent) {
+        when (event) {
+            MainEvent.StartScreen -> startScreen()
+        }
+    }
+
+    private fun startScreen() {
         router.newRootScreen(onStartedGenderScreen())
     }
 }

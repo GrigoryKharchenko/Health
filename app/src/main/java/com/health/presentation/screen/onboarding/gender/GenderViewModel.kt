@@ -9,7 +9,13 @@ class GenderViewModel @Inject constructor(
     private val router: Router
 ) : ViewModel() {
 
-    fun openDailyActivityFragment() {
+    fun perform(event: GenderEvent) {
+        when (event) {
+            GenderEvent.OpenDailyActivityFragment -> openDailyActivityFragment()
+        }
+    }
+
+    private fun openDailyActivityFragment() {
         router.navigateTo(onStartedDailyActivityScreen())
     }
 }

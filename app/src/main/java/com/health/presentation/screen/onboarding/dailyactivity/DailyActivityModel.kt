@@ -8,5 +8,5 @@ data class DailyActivityModel(
     val amountCalories: Int,
     @DrawableRes val iconActivity: Int,
     @StringRes val description: Int,
-    val isSelected: Boolean = false
+    val isSelected: Boolean
 )
