@@ -6,4 +6,13 @@
     <string name="gender_man">Мужской</string>
     <string name="gender_woman">Женский</string>
     <string name="gender_title">Выбор пола</string>
+
+    <!-- OnBoardingDailyActivity -->
+    <string name="daily_activity_title">Уровень ежедневной активности</string>
+    <string name="description_min">Для малоподвижных людей, тренировок мало или они отсутствуют.</string>
+    <string name="description_pre_min">Для людей с низкой активностью, легкие тренировки 1-3 раза в неделю или в виде эквивалента другой активности.</string>
+    <string name="description_average">Для умеренно активных людей: физическая работа средней тяжести или регулярные тренировки 3-5 дней в неделю.</string>
+    <string name="description_pre_max">Для очень активных людей: физическая работа полный день или интенсивные тренировки 6-7 раз в неделю.</string>
+    <string name="description_max">Для предельно активных людей: тяжелая физическая работа и интенсивные тренировки занятия спортом.</string>
+    <string name="amount_calories_hint">Введите количество каллорий</string>
 </resources>

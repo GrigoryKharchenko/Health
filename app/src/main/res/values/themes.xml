@@ -14,6 +14,25 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Text" />
+
+    <style name="Text.Blue">
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="Text.Blue.12">
+        <item name="android:textSize">@dimen/sp_12</item>
+    </style>
+
+    <style name="Text.LightGray">
+        <item name="android:textColor">@color/light_gray</item>
+    </style>
+
+    <style name="Text.LightGray.12">
+        <item name="android:textSize">@dimen/sp_12</item>
+    </style>
+
+
     <style name="TitleToolbar" parent="@style/Widget.MaterialComponents.Toolbar.Primary">
         <item name="titleCentered">true</item>
     </style>
@@ -27,5 +46,14 @@
         <item name="android:stateListAnimator">@null</item>
         <item name="cornerRadius">@dimen/dp_16</item>
         <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <style name="EditTextBg">
+        <item name="android:textCursorDrawable">@drawable/cursor_color</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="EditTextLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/blue</item>
     </style>
 </resources>

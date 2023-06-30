@@ -4,6 +4,9 @@ import android.content.Context
 import com.health.HealthApp
 import com.health.di.module.ActivityModule
 import com.health.di.module.FragmentModule
+import com.health.di.module.NavigationModule
+import com.health.di.module.RepositoryModule
+import com.health.di.module.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -17,7 +20,10 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         AndroidInjectionModule::class,
         ActivityModule::class,
-        FragmentModule::class
+        FragmentModule::class,
+        NavigationModule::class,
+        ViewModelModule::class,
+        RepositoryModule::class
     ]
 )
 interface AppComponent : AndroidInjector<HealthApp> {

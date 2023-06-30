@@ -1,4 +1,4 @@
-package com.health.presentation.screen.onboarding
+package com.health.presentation.screen.onboarding.gender
 
 import android.graphics.Color
 import android.os.Bundle
@@ -6,14 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
+import androidx.lifecycle.ViewModelProvider
 import com.health.R
 import com.health.databinding.FragmentGenderBinding
+import com.health.di.ViewModelFactory
 import com.health.presentation.base.BaseFragment
+import javax.inject.Inject
 
 class GenderFragment : BaseFragment() {
 
     private var _binding: FragmentGenderBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var defaultViewModelFactory: ViewModelFactory
+
+    private val viewModel by lazy {
+        ViewModelProvider(this, defaultViewModelFactory)[GenderViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,11 +47,18 @@ class GenderFragment : BaseFragment() {
                 tvMan.setBackgroundColor(Color.TRANSPARENT)
                 btnNext.isGone = false
             }
+            btnNext.setOnClickListener {
+                viewModel.openDailyActivityFragment()
+            }
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        fun newInstance() = GenderFragment()
     }
 }
