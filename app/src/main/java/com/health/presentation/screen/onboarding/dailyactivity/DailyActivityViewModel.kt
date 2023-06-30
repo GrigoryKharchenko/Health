@@ -2,7 +2,9 @@ package com.health.presentation.screen.onboarding.dailyactivity
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.github.terrakok.cicerone.Router
 import com.health.domain.DailyActivityRepository
+import com.health.presentation.screen.onboarding.characters.onStartedCharacterScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -10,7 +12,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DailyActivityViewModel @Inject constructor(
-    private val dailyActivityRepository: DailyActivityRepository
+    private val dailyActivityRepository: DailyActivityRepository,
+    private val router: Router
 ) : ViewModel() {
 
     private val _dailyActivityFlow = MutableStateFlow(DailyActivityViewState())
@@ -25,6 +28,7 @@ class DailyActivityViewModel @Inject constructor(
     fun perform(event: DailyActivityEvent) {
         when (event) {
             is DailyActivityEvent.SelectDailyActivity -> selectDailyActivity(event.dailyActivityId)
+            DailyActivityEvent.OpenCharacterFragment -> openCharacterFragment()
         }
     }
 
@@ -33,6 +37,7 @@ class DailyActivityViewModel @Inject constructor(
             when {
                 dailyActivityId == lastSelectedDailyActivityId && dailyActivityId == dailyActivity.id ->
                     dailyActivity.copy(isSelected = !dailyActivity.isSelected)
+
                 dailyActivity.id == dailyActivityId -> dailyActivity.copy(isSelected = true)
                 dailyActivity.id == lastSelectedDailyActivityId -> dailyActivity.copy(isSelected = false)
                 else -> dailyActivity
@@ -48,6 +53,10 @@ class DailyActivityViewModel @Inject constructor(
                 }
             )
         }
+    }
+
+    private fun openCharacterFragment() {
+        router.navigateTo(onStartedCharacterScreen())
     }
 
     private fun getDailyActivity() {
