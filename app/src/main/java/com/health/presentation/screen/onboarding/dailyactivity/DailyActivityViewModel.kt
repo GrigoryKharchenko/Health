@@ -42,6 +42,7 @@ class DailyActivityViewModel @Inject constructor(
         _dailyActivityFlow.update { state ->
             state.copy(
                 dailyActivities = dailyActivities,
+                //TODO переделать
                 isVisibleBtnNext = dailyActivities.any { dailyActivity ->
                     dailyActivity.isSelected
                 }

@@ -10,20 +10,20 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class ViewModelModule {
+interface ViewModelModule {
 
     @Binds
     @IntoMap
     @ViewModelKey(MainViewModel::class)
-    abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
+    fun bindMainViewModel(viewModel: MainViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(GenderViewModel::class)
-    abstract fun bindGenderViewModel(viewModel: GenderViewModel): ViewModel
+    fun bindGenderViewModel(viewModel: GenderViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(DailyActivityViewModel::class)
-    abstract fun bindDailyActivityViewModel(viewModel: DailyActivityViewModel): ViewModel
+    fun bindDailyActivityViewModel(viewModel: DailyActivityViewModel): ViewModel
 }
