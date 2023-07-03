@@ -2,14 +2,18 @@ package com.health.presentation.screen.onboarding.characters
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.github.terrakok.cicerone.Router
 import com.health.R
+import com.health.presentation.screen.onboarding.purpose.onStartedPurposeScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class CharactersViewModel @Inject constructor() : ViewModel() {
+class CharactersViewModel @Inject constructor(
+    private val router: Router
+) : ViewModel() {
 
     private val _state = MutableStateFlow(CharactersViewState())
     val state = _state.asStateFlow()
@@ -21,9 +25,11 @@ class CharactersViewModel @Inject constructor() : ViewModel() {
                 height = event.height,
                 weight = event.weight
             )
+
             CharactersViewEvent.HideAgeError -> hideAgeError()
             CharactersViewEvent.HideHeightError -> hideHeightError()
             CharactersViewEvent.HideWeightError -> hideWeightError()
+            CharactersViewEvent.OpenPurposeFragment -> openPurposeFragment()
         }
     }
 
@@ -40,6 +46,9 @@ class CharactersViewModel @Inject constructor() : ViewModel() {
                     weightError = if (weight.isEmpty()) R.string.empty_error else R.string.empty,
                 )
             )
+            if (age.isNotEmpty() && height.isNotEmpty() && weight.isNotEmpty()) {
+                openPurposeFragment()
+            }
         }
     }
 
@@ -65,5 +74,9 @@ class CharactersViewModel @Inject constructor() : ViewModel() {
                 state.copy(weightError = R.string.empty)
             }
         }
+    }
+
+    private fun openPurposeFragment() {
+        router.navigateTo(onStartedPurposeScreen())
     }
 }

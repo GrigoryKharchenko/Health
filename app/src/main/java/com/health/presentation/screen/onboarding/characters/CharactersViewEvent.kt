@@ -11,4 +11,5 @@ sealed interface CharactersViewEvent {
     object HideAgeError : CharactersViewEvent
     object HideHeightError : CharactersViewEvent
     object HideWeightError : CharactersViewEvent
+    object OpenPurposeFragment : CharactersViewEvent
 }

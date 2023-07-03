@@ -32,6 +32,21 @@
         <item name="android:textSize">@dimen/sp_12</item>
     </style>
 
+    <style name="Text.LightGray.14">
+        <item name="android:textSize">@dimen/sp_14</item>
+    </style>
+
+    <style name="Text.Black">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Text.Black.18">
+        <item name="android:textSize">@dimen/sp_18</item>
+    </style>
+
+    <style name="Text.Black.18.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
 
     <style name="TitleToolbar" parent="@style/Widget.MaterialComponents.Toolbar.Primary">
         <item name="titleCentered">true</item>
@@ -55,5 +70,9 @@
 
     <style name="EditTextLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="hintTextColor">@color/blue</item>
+    </style>
+
+    <style name="RadioButtonBlueBg">
+        <item name="buttonTint">@color/blue</item>
     </style>
 </resources>
