@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Health</string>
     <string name="next">Далее</string>
+    <string name="empty_error">Поле не может быть пустым</string>
+    <string name="empty" />
 
     <!-- OnBoardingGender -->
     <string name="gender_man">Мужской</string>
@@ -15,4 +17,10 @@
     <string name="description_pre_max">Для очень активных людей: физическая работа полный день или интенсивные тренировки 6-7 раз в неделю.</string>
     <string name="description_max">Для предельно активных людей: тяжелая физическая работа и интенсивные тренировки занятия спортом.</string>
     <string name="amount_calories_hint">Введите количество каллорий</string>
+
+    <!-- OnBoardingCharacters -->
+    <string name="characters_title">Персональные данные</string>
+    <string name="characters_age">Ващ возраст</string>
+    <string name="characters_height">Ваш рост</string>
+    <string name="characters_weight">Ваш вес</string>
 </resources>
