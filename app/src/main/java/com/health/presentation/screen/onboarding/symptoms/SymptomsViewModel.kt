@@ -8,9 +8,9 @@ class SymptomsViewModel @Inject constructor(
     private val router: Router
 ) : ViewModel() {
 
-    fun perform(event: SymptomsEvent) {
+    fun perform(event: SymptomsViewEvent) {
         when (event) {
-            SymptomsEvent.GoBackScreen -> goBack()
+            SymptomsViewEvent.GoBack -> goBack()
         }
     }
 

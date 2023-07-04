@@ -15,11 +15,11 @@ class PurposeViewModel @Inject constructor(
     private val _state = MutableStateFlow(PurposeViewState())
     val state = _state.asStateFlow()
 
-    fun perform(event: PurposeEvent) {
+    fun perform(event: PurposeViewEvent) {
         when (event) {
-            PurposeEvent.OpenSymptomsDialogFragment -> openSymptomsDialogFragment()
-            PurposeEvent.CheckPurposeGroup -> checkPurposeGroup()
-            PurposeEvent.CheckSicknessGroup -> checkSicknessGroup()
+            PurposeViewEvent.OpenSymptomsDialogFragment -> openSymptomsDialogFragment()
+            PurposeViewEvent.CheckPurposeGroupView -> checkPurposeGroup()
+            PurposeViewEvent.CheckSicknessGroup -> checkSicknessGroup()
         }
     }
 

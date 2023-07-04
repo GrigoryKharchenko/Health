@@ -4,6 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.terrakok.cicerone.Router
 import com.health.R
+import com.health.presentation.screen.onboarding.characters.CharactersViewEvent.CheckValidation
+import com.health.presentation.screen.onboarding.characters.CharactersViewEvent.HideAgeError
+import com.health.presentation.screen.onboarding.characters.CharactersViewEvent.HideHeightError
+import com.health.presentation.screen.onboarding.characters.CharactersViewEvent.HideWeightError
+import com.health.presentation.screen.onboarding.characters.CharactersViewEvent.OpenPurposeFragment
 import com.health.presentation.screen.onboarding.purpose.onStartedPurposeScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,16 +25,15 @@ class CharactersViewModel @Inject constructor(
 
     fun perform(event: CharactersViewEvent) {
         when (event) {
-            is CharactersViewEvent.CheckValidation -> checkValidation(
+            is CheckValidation -> checkValidation(
                 age = event.age,
                 height = event.height,
                 weight = event.weight
             )
-
-            CharactersViewEvent.HideAgeError -> hideAgeError()
-            CharactersViewEvent.HideHeightError -> hideHeightError()
-            CharactersViewEvent.HideWeightError -> hideWeightError()
-            CharactersViewEvent.OpenPurposeFragment -> openPurposeFragment()
+            HideAgeError -> hideAgeError()
+            HideHeightError -> hideHeightError()
+            HideWeightError -> hideWeightError()
+            OpenPurposeFragment -> openPurposeFragment()
         }
     }
 
@@ -46,9 +50,7 @@ class CharactersViewModel @Inject constructor(
                     weightError = if (weight.isEmpty()) R.string.empty_error else R.string.empty,
                 )
             )
-            if (age.isNotEmpty() && height.isNotEmpty() && weight.isNotEmpty()) {
-                openPurposeFragment()
-            }
+            if (age.isNotEmpty() && height.isNotEmpty() && weight.isNotEmpty()) openPurposeFragment()
         }
     }
 

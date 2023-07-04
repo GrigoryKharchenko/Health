@@ -35,7 +35,13 @@ class PurposeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             tvSicknessDescription.setOnClickListener {
-                viewModel.perform(PurposeEvent.OpenSymptomsDialogFragment)
+                viewModel.perform(PurposeViewEvent.OpenSymptomsDialogFragment)
+            }
+            rgPurpose.setOnCheckedChangeListener { _, _ ->
+                viewModel.perform(PurposeViewEvent.CheckPurposeGroupView)
+            }
+            rgSickness.setOnCheckedChangeListener { _, _ ->
+                viewModel.perform(PurposeViewEvent.CheckSicknessGroup)
             }
             launchWhenStarted(viewModel.state, ::handleState)
         }
@@ -47,15 +53,7 @@ class PurposeFragment : BaseFragment() {
     }
 
     private fun handleState(state: PurposeViewState) {
-        with(binding) {
-            rgPurpose.setOnCheckedChangeListener { _, _ ->
-                viewModel.perform(PurposeEvent.CheckPurposeGroup)
-            }
-            rgSickness.setOnCheckedChangeListener { _, _ ->
-               viewModel.perform(PurposeEvent.CheckSicknessGroup)
-            }
-            btnNext.isVisible = state.isVisibleNextButton
-        }
+        binding.btnNext.isVisible = state.isVisibleNextButton
     }
 
     companion object {

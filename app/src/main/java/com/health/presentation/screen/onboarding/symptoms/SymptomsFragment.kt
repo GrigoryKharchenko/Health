@@ -32,7 +32,7 @@ class SymptomsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.toolBar.setNavigationOnClickListener {
-            viewModel.perform(SymptomsEvent.GoBackScreen)
+            viewModel.perform(SymptomsViewEvent.GoBack)
         }
     }
 
