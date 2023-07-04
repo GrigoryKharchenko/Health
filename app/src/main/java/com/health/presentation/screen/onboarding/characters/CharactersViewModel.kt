@@ -2,28 +2,38 @@ package com.health.presentation.screen.onboarding.characters
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.github.terrakok.cicerone.Router
 import com.health.R
+import com.health.presentation.screen.onboarding.characters.CharactersViewEvent.CheckValidation
+import com.health.presentation.screen.onboarding.characters.CharactersViewEvent.HideAgeError
+import com.health.presentation.screen.onboarding.characters.CharactersViewEvent.HideHeightError
+import com.health.presentation.screen.onboarding.characters.CharactersViewEvent.HideWeightError
+import com.health.presentation.screen.onboarding.characters.CharactersViewEvent.OpenPurposeFragment
+import com.health.presentation.screen.onboarding.purpose.onStartedPurposeScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class CharactersViewModel @Inject constructor() : ViewModel() {
+class CharactersViewModel @Inject constructor(
+    private val router: Router
+) : ViewModel() {
 
     private val _state = MutableStateFlow(CharactersViewState())
     val state = _state.asStateFlow()
 
     fun perform(event: CharactersViewEvent) {
         when (event) {
-            is CharactersViewEvent.CheckValidation -> checkValidation(
+            is CheckValidation -> checkValidation(
                 age = event.age,
                 height = event.height,
                 weight = event.weight
             )
-            CharactersViewEvent.HideAgeError -> hideAgeError()
-            CharactersViewEvent.HideHeightError -> hideHeightError()
-            CharactersViewEvent.HideWeightError -> hideWeightError()
+            HideAgeError -> hideAgeError()
+            HideHeightError -> hideHeightError()
+            HideWeightError -> hideWeightError()
+            OpenPurposeFragment -> openPurposeFragment()
         }
     }
 
@@ -40,6 +50,7 @@ class CharactersViewModel @Inject constructor() : ViewModel() {
                     weightError = if (weight.isEmpty()) R.string.empty_error else R.string.empty,
                 )
             )
+            if (age.isNotEmpty() && height.isNotEmpty() && weight.isNotEmpty()) openPurposeFragment()
         }
     }
 
@@ -65,5 +76,9 @@ class CharactersViewModel @Inject constructor() : ViewModel() {
                 state.copy(weightError = R.string.empty)
             }
         }
+    }
+
+    private fun openPurposeFragment() {
+        router.navigateTo(onStartedPurposeScreen())
     }
 }
