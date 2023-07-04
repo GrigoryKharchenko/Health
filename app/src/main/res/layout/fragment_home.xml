@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolBar"
+            style="@style/TitleToolbar.TextWhite"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/home_title" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvPurposeTitle"
+        style="@style/Text.Black.16.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:text="@string/purpose"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvPurpose"
+        style="@style/Text.Black.16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPurposeTitle"
+        tools:text="1876 Calories" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvDailyPurposeTitle"
+        style="@style/Text.Black.16.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:text="@string/daily_purpose_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPurpose" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvAmountCalories"
+        style="@style/Text.Black.16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        app:layout_constraintEnd_toStartOf="@id/tvAmountProtein"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDailyPurposeTitle"
+        tools:text="1876 Calories" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvAmountProtein"
+        style="@style/Text.Black.16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvAmountCalories"
+        app:layout_constraintTop_toBottomOf="@id/tvDailyPurposeTitle"
+        tools:text="ot 200 do 200 belkov" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvAmountFats"
+        style="@style/Text.Black.16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        app:layout_constraintEnd_toStartOf="@id/tvAmountCarbs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAmountProtein"
+        tools:text="ot 200 do 200 jirov" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvAmountCarbs"
+        style="@style/Text.Black.16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvAmountFats"
+        app:layout_constraintTop_toBottomOf="@id/tvAmountProtein"
+        tools:text="ot 200 do 200 uglevodov" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvBodyMassIndexTitle"
+        style="@style/Text.Black.16.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:text="@string/body_mass_index_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAmountFats" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvBodyMassIndex"
+        style="@style/Text.Black.16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:maxLength="4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvBodyMassIndexTitle"
+        app:layout_constraintTop_toTopOf="@id/tvBodyMassIndexTitle"
+        tools:text="45" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvDailyCaloriesTitle"
+        style="@style/Text.Black.16.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:text="@string/daily_calories_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvBodyMassIndexTitle" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvDailyAmountCalories"
+        style="@style/Text.Black.16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        app:layout_constraintEnd_toStartOf="@id/tvAmountProtein"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDailyCaloriesTitle"
+        tools:text="1876 Calories" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvDailyAmountProtein"
+        style="@style/Text.Black.16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDailyAmountCalories"
+        tools:text="ot 200 do 200 belkov" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvDailyAmountFats"
+        style="@style/Text.Black.16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        app:layout_constraintEnd_toStartOf="@id/tvAmountCarbs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDailyAmountProtein"
+        tools:text="ot 200 do 200 jirov" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvDailyAmountCarbs"
+        style="@style/Text.Black.16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDailyAmountFats"
+        tools:text="ot 200 do 200 uglevodov" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddPfc"
+        style="@style/OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:text="@string/add_daily_calories"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDailyAmountCarbs" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvHintUser"
+        style="@style/Text.Black.16.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:text="@string/hint_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnAddPfc" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

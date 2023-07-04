@@ -1,5 +1,8 @@
 package com.health.di.module
 
+import com.health.presentation.screen.addpfc.AddPfcFragment
+import com.health.presentation.screen.home.HomeFragment
+import com.health.presentation.screen.navview.NavViewFragment
 import com.health.presentation.screen.onboarding.characters.CharactersFragment
 import com.health.presentation.screen.onboarding.dailyactivity.DailyActivityFragment
 import com.health.presentation.screen.onboarding.gender.GenderFragment
@@ -25,4 +28,13 @@ interface FragmentModule {
 
     @ContributesAndroidInjector
     fun bindSymptomsFragment(): SymptomsFragment
+
+    @ContributesAndroidInjector
+    fun bindNavViewFragment(): NavViewFragment
+
+    @ContributesAndroidInjector
+    fun bindHomeFragment(): HomeFragment
+
+    @ContributesAndroidInjector
+    fun bindAddPfcFragment(): AddPfcFragment
 }

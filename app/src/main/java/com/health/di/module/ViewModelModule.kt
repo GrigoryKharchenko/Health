@@ -3,6 +3,9 @@ package com.health.di.module
 import androidx.lifecycle.ViewModel
 import com.health.di.ViewModelKey
 import com.health.presentation.screen.activiti.MainViewModel
+import com.health.presentation.screen.addpfc.AddPfcViewModel
+import com.health.presentation.screen.home.HomeViewModel
+import com.health.presentation.screen.navview.NavViewViewModel
 import com.health.presentation.screen.onboarding.characters.CharactersViewModel
 import com.health.presentation.screen.onboarding.dailyactivity.DailyActivityViewModel
 import com.health.presentation.screen.onboarding.gender.GenderViewModel
@@ -44,4 +47,19 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(SymptomsViewModel::class)
     fun bindSymptomsViewModel(viewModel: SymptomsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NavViewViewModel::class)
+    fun bindNavViewViewModel(viewModel: NavViewViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(HomeViewModel::class)
+    fun bindHomeViewModel(viewModel: HomeViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddPfcViewModel::class)
+    fun bindAddPfcViewModel(viewModel: AddPfcViewModel): ViewModel
 }

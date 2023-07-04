@@ -10,7 +10,8 @@ import com.health.databinding.ItemDailyActivityBinding
 import com.health.extension.inflate
 
 class DailyActivityAdapter(
-    private val onItemClick: (Int) -> Unit
+    private val onItemClick: (Int) -> Unit,
+    private val setActivityCoefficient: (Double) -> Unit
 ) :
     ListAdapter<DailyActivityModel, BestFilmsActorViewHolder>(BestFilmsActorDiffUtil()) {
 
@@ -18,7 +19,7 @@ class DailyActivityAdapter(
         BestFilmsActorViewHolder(ItemDailyActivityBinding.bind(parent.inflate(R.layout.item_daily_activity)))
 
     override fun onBindViewHolder(holder: BestFilmsActorViewHolder, position: Int) =
-        holder.bind(getItem(position), onItemClick)
+        holder.bind(getItem(position), onItemClick, setActivityCoefficient)
 }
 
 class BestFilmsActorViewHolder(private val binding: ItemDailyActivityBinding) :
@@ -27,6 +28,7 @@ class BestFilmsActorViewHolder(private val binding: ItemDailyActivityBinding) :
     fun bind(
         dailyActivityModel: DailyActivityModel,
         onItemClick: (Int) -> Unit,
+        setActivityCoefficient: (Double) -> Unit
     ) {
         with(binding) {
             ivIconActivity.setImageResource(dailyActivityModel.iconActivity)
@@ -39,6 +41,7 @@ class BestFilmsActorViewHolder(private val binding: ItemDailyActivityBinding) :
             }
             root.setOnClickListener {
                 onItemClick(dailyActivityModel.id)
+                setActivityCoefficient(dailyActivityModel.coefficient)
             }
         }
     }
@@ -46,9 +49,15 @@ class BestFilmsActorViewHolder(private val binding: ItemDailyActivityBinding) :
 
 private class BestFilmsActorDiffUtil : DiffUtil.ItemCallback<DailyActivityModel>() {
 
-    override fun areItemsTheSame(oldItem: DailyActivityModel, newItem: DailyActivityModel): Boolean =
+    override fun areItemsTheSame(
+        oldItem: DailyActivityModel,
+        newItem: DailyActivityModel
+    ): Boolean =
         oldItem.id == newItem.id
 
-    override fun areContentsTheSame(oldItem: DailyActivityModel, newItem: DailyActivityModel): Boolean =
+    override fun areContentsTheSame(
+        oldItem: DailyActivityModel,
+        newItem: DailyActivityModel
+    ): Boolean =
         oldItem == newItem
 }

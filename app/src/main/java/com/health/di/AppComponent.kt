@@ -4,6 +4,7 @@ import android.content.Context
 import com.health.HealthApp
 import com.health.di.module.ActivityModule
 import com.health.di.module.FragmentModule
+import com.health.di.module.InteractorModule
 import com.health.di.module.NavigationModule
 import com.health.di.module.RepositoryModule
 import com.health.di.module.ViewModelModule
@@ -23,7 +24,8 @@ import javax.inject.Singleton
         FragmentModule::class,
         NavigationModule::class,
         ViewModelModule::class,
-        RepositoryModule::class
+        RepositoryModule::class,
+        InteractorModule::class
     ]
 )
 interface AppComponent : AndroidInjector<HealthApp> {

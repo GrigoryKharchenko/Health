@@ -39,11 +39,13 @@ class GenderFragment : BaseFragment() {
                 tvMan.setBackgroundResource(R.drawable.blue_bg)
                 tvWoman.setBackgroundColor(Color.TRANSPARENT)
                 btnNext.isGone = false
+                viewModel.perform(GenderEvent.SetGender(R.string.gender_man))
             }
             tvWoman.setOnClickListener {
                 tvWoman.setBackgroundResource(R.drawable.pink_bg)
                 tvMan.setBackgroundColor(Color.TRANSPARENT)
                 btnNext.isGone = false
+                viewModel.perform(GenderEvent.SetGender(R.string.gender_woman))
             }
             btnNext.setOnClickListener {
                 viewModel.perform(GenderEvent.OpenDailyActivityFragment)

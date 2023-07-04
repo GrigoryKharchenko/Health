@@ -1,7 +1,7 @@
-package com.health.data
+package com.health.data.repository
 
 import com.health.R
-import com.health.domain.DailyActivityRepository
+import com.health.domain.repository.DailyActivityRepository
 import com.health.presentation.screen.onboarding.dailyactivity.DailyActivityModel
 import javax.inject.Inject
 

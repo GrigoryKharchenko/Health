@@ -3,7 +3,8 @@ package com.health.presentation.screen.onboarding.dailyactivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.terrakok.cicerone.Router
-import com.health.domain.DailyActivityRepository
+import com.health.domain.repository.DailyActivityRepository
+import com.health.domain.repository.DataStoreRepository
 import com.health.presentation.screen.onboarding.characters.onStartedCharacterScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 class DailyActivityViewModel @Inject constructor(
     private val dailyActivityRepository: DailyActivityRepository,
-    private val router: Router
+    private val router: Router,
+    private val dataStoreRepository: DataStoreRepository
 ) : ViewModel() {
 
     private val _dailyActivityFlow = MutableStateFlow(DailyActivityViewState())
@@ -29,6 +31,7 @@ class DailyActivityViewModel @Inject constructor(
         when (event) {
             is DailyActivityEvent.SelectDailyActivity -> selectDailyActivity(event.dailyActivityId)
             DailyActivityEvent.OpenCharacterFragment -> openCharacterFragment()
+            is DailyActivityEvent.SetActivityCoefficient -> setActivityCoefficient(event.activityCoefficient)
         }
     }
 
@@ -66,6 +69,12 @@ class DailyActivityViewModel @Inject constructor(
                     dailyActivities = dailyActivityRepository.getDailyActivity(),
                 )
             )
+        }
+    }
+
+    private fun setActivityCoefficient(activityCoefficient: Double) {
+        viewModelScope.launch {
+            dataStoreRepository.setActivityCoefficient(activityCoefficient)
         }
     }
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.terrakok.cicerone.Router
 import com.health.R
+import com.health.domain.repository.DataStoreRepository
 import com.health.presentation.screen.onboarding.characters.CharactersViewEvent.CheckValidation
 import com.health.presentation.screen.onboarding.characters.CharactersViewEvent.HideAgeError
 import com.health.presentation.screen.onboarding.characters.CharactersViewEvent.HideHeightError
@@ -17,7 +18,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CharactersViewModel @Inject constructor(
-    private val router: Router
+    private val router: Router,
+    private val dataStoreRepository: DataStoreRepository
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(CharactersViewState())
@@ -50,7 +52,12 @@ class CharactersViewModel @Inject constructor(
                     weightError = if (weight.isEmpty()) R.string.empty_error else R.string.empty,
                 )
             )
-            if (age.isNotEmpty() && height.isNotEmpty() && weight.isNotEmpty()) openPurposeFragment()
+            if (age.isNotEmpty() && height.isNotEmpty() && weight.isNotEmpty()) {
+                dataStoreRepository.setAge(age.toInt())
+                dataStoreRepository.setWeight(weight.toInt())
+                dataStoreRepository.setHeight(height.toInt())
+                openPurposeFragment()
+            }
         }
     }
 

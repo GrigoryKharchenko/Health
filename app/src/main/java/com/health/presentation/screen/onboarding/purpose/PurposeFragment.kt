@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.health.databinding.FragmentPurposeBinding
@@ -35,13 +36,20 @@ class PurposeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             tvSicknessDescription.setOnClickListener {
-                viewModel.perform(PurposeViewEvent.OpenSymptomsDialogFragment)
+                viewModel.perform(PurposeViewEvent.OpenSymptomsFragment)
             }
-            rgPurpose.setOnCheckedChangeListener { _, _ ->
+            rgPurpose.setOnCheckedChangeListener { group, _ ->
+                val selectedRadioButton: RadioButton =
+                    root.findViewById(group.checkedRadioButtonId)
                 viewModel.perform(PurposeViewEvent.CheckPurposeGroupView)
+                viewModel.perform(PurposeViewEvent.CalculatePfc(selectedRadioButton.text.toString()))
             }
             rgSickness.setOnCheckedChangeListener { _, _ ->
                 viewModel.perform(PurposeViewEvent.CheckSicknessGroup)
+            }
+            btnNext.setOnClickListener {
+                viewModel.perform(PurposeViewEvent.SetAuthorized)
+                viewModel.perform(PurposeViewEvent.OpenNavViewFragment)
             }
             launchWhenStarted(viewModel.state, ::handleState)
         }

@@ -25,6 +25,13 @@ class DailyActivityFragment : BaseFragment() {
                         dailyActivityId = id
                     )
                 )
+            },
+            setActivityCoefficient = { activityCoefficient ->
+                viewModel.perform(
+                    DailyActivityEvent.SetActivityCoefficient(
+                        activityCoefficient = activityCoefficient
+                    )
+                )
             }
         )
     }
