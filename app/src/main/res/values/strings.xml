@@ -10,7 +10,7 @@
     <string name="gender_title">Выбор пола</string>
 
     <!-- OnBoardingDailyActivity -->
-    <string name="daily_activity_title">Уровень ежедневной активности</string>
+    <string name="daily_activity_title">Коэффициент ежедневной активности</string>
     <string name="description_min">Для малоподвижных людей, тренировок мало или они отсутствуют.</string>
     <string name="description_pre_min">Для людей с низкой активностью, легкие тренировки 1-3 раза в неделю или в виде эквивалента другой активности.</string>
     <string name="description_average">Для умеренно активных людей: физическая работа средней тяжести или регулярные тренировки 3-5 дней в неделю.</string>
@@ -20,11 +20,12 @@
 
     <!-- OnBoardingCharacters -->
     <string name="characters_title">Персональные данные</string>
-    <string name="characters_age">Ващ возраст</string>
-    <string name="characters_height">Ваш рост</string>
-    <string name="characters_weight">Ваш вес</string>
+    <string name="characters_age">Ваш возраст, лет</string>
+    <string name="characters_height">Ваш рост, см</string>
+    <string name="characters_weight">Ваш вес, кг</string>
 
     <!-- OnBoardingPurpose -->
+    <string name="purpose_toolbar_title">Выбор цели</string>
     <string name="purpose_weight_loss">Похудение</string>
     <string name="purpose_weight_save">Сохранение веса / Рекомпозиция</string>
     <string name="purpose_weight_gain">Набор веса / мышечной массы</string>
@@ -35,7 +36,7 @@
     <string name="sickness_leptin_resistance">Лептинорезистентность / Инсулинорезистентность</string>
     <string name="sickness_deficiencies">Дефициты половых гормонов и различные активные компенсаторные механизмы</string>
     <string name="sickness_endocrine">Различные эндокринные нарушения</string>
-    <string name="sickness_description">Посмотреть симптомы</string>
+    <string name="sickness_description"><u>Посмотреть симптомы</u></string>
 
     <!-- OnBoardingSymptoms -->
     <string name="symptoms_title">Симптомы гормональных нарушений</string>

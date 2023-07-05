@@ -4,6 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolBar"
+            style="@style/TitleToolbar.TextWhite"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/purpose_toolbar_title" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvTitlePurpose"
         style="@style/Text.Black.18"
@@ -13,7 +34,7 @@
         android:layout_marginTop="@dimen/dp_16"
         android:text="@string/purpose_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/appBar" />
 
     <RadioGroup
         android:id="@+id/rgPurpose"
@@ -62,7 +83,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvSicknessDescription"
-        style="@style/Text.Black.18.Bold"
+        style="@style/Text.Blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dp_12"

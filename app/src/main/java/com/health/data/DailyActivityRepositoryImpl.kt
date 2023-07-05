@@ -11,35 +11,35 @@ class DailyActivityRepositoryImpl @Inject constructor() : DailyActivityRepositor
         listOf(
             DailyActivityModel(
                 id = 0,
-                amountCalories = 1200,
+                coefficient = 1.2,
                 iconActivity = R.drawable.ic_min_activity,
                 description = R.string.description_min,
                 isSelected = false
             ),
             DailyActivityModel(
                 id = 1,
-                amountCalories = 1375,
+                coefficient = 1.3,
                 iconActivity = R.drawable.ic_pre_min_activity,
                 description = R.string.description_pre_min,
                 isSelected = false
             ),
             DailyActivityModel(
                 id = 2,
-                amountCalories = 1550,
+                coefficient = 1.5,
                 iconActivity = R.drawable.ic_average_activity,
                 description = R.string.description_average,
                 isSelected = false
             ),
             DailyActivityModel(
                 id = 3,
-                amountCalories = 1725,
+                coefficient = 1.7,
                 iconActivity = R.drawable.ic_pre_max_activity,
                 description = R.string.description_pre_max,
                 isSelected = false
             ),
             DailyActivityModel(
                 id = 4,
-                amountCalories = 1900,
+                coefficient = 1.9,
                 iconActivity = R.drawable.ic_max_activity,
                 description = R.string.description_max,
                 isSelected = false
