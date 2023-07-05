@@ -5,7 +5,7 @@ import androidx.annotation.StringRes
 
 data class DailyActivityModel(
     val id: Int,
-    val amountCalories: Int,
+    val coefficient: Double,
     @DrawableRes val iconActivity: Int,
     @StringRes val description: Int,
     val isSelected: Boolean

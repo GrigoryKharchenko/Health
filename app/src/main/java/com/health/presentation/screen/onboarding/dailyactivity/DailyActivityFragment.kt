@@ -47,6 +47,7 @@ class DailyActivityFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             rvActivity.adapter = adapter
+            rvActivity.itemAnimator = null
             btnNext.setOnClickListener { viewModel.perform(DailyActivityEvent.OpenCharacterFragment) }
             launchWhenStarted(viewModel.dailyActivityFlow, ::handleUiState)
         }

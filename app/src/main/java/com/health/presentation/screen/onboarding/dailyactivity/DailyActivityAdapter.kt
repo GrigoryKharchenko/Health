@@ -30,7 +30,7 @@ class BestFilmsActorViewHolder(private val binding: ItemDailyActivityBinding) :
     ) {
         with(binding) {
             ivIconActivity.setImageResource(dailyActivityModel.iconActivity)
-            tvAmountCalories.text = dailyActivityModel.amountCalories.toString()
+            tvCoefficient.text = dailyActivityModel.coefficient.toString()
             tvDescription.text = itemView.context.getString(dailyActivityModel.description)
             if (dailyActivityModel.isSelected) {
                 root.setBackgroundResource(R.drawable.blue_bg)
